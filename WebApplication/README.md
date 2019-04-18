@@ -26,6 +26,10 @@ We recommend you use the latest version of Chrome to complete this workshop.
 
 You will need a local text editor for making minor updates to configuration files.
 
+### AWS CLI
+
+You will need to use the AWS CLI for some steps in the modules. Please have it [installed](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) and [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html#cli-quick-configuration) before starting. 
+
 ## Modules
 
 This workshop is broken up into multiple modules. You must complete each module before proceeding to the next, however, modules 1 and 2 have AWS CloudFormation templates available that you can use to launch the necessary resources without manually creating them yourself if you'd like to skip ahead.
