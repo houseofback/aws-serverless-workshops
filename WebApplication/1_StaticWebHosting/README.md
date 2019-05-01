@@ -65,7 +65,7 @@ Upload the website assets for this module to your S3 bucket. You can use the AWS
 <details>
 <summary><strong>CLI step-by-step instructions (expand for details)</strong></summary><p>
 
-If you already have the CLI installed and configured, you can use it to copy the necessary web assets from `s3://wildrydes-us-east-1/WebApplication/1_StaticWebHosting/website` to your bucket.
+If you already have the CLI installed and configured, you can use it to copy the necessary web assets from `s3://SOURCE_BUCKET` to your bucket.
 
 **Tip**: Look at [AWS S3 Sync](https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html)
 
