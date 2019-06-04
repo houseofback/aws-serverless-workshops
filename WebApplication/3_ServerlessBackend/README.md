@@ -52,6 +52,8 @@ Use the IAM console to create a new role. Name it `WildRydesLambda` and select A
 
 Attach the managed policy called `AWSLambdaBasicExecutionRole` to this role to grant the necessary CloudWatch Logs permissions. Also, create a custom inline policy for your role that allows the `ddb:PutItem` action for the table you created in the previous section.
 
+Note: AWS Educate accounts limit AWS IAM inline policies therefore use the managed policy called `AmazonDynamoDBFullAccess` instead.
+
 <details>
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
 
