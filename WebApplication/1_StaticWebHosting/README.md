@@ -9,11 +9,11 @@ The architecture for this module is very straightforward. All of your static web
 
 ![Static website architecture](../images/static-website-architecture.png)
 
-For the purposes of this module you'll use the Amazon S3 website endpoint URL that we supply. It takes the form `http://{your-bucket-name}.s3-website-{region}.amazonaws.com` or `bucket-name.s3-website.region.amazonaws.com` depending on the region you use. For most real applications you'll want to use a custom domain to host your site. If you're interested in using a your own domain, follow the instructions for [setting up a static website using a custom domain](http://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html) in the Amazon S3 documentation.
+For the purposes of this module you'll use the Amazon S3 website endpoint URL that we supply. It takes the form `http://{your-bucket-name}.s3-website-{region}.amazonaws.com` or `bucket-name.s3-website.region.amazonaws.com` depending on the region you use. For most real applications you'll want to use a custom domain to host your site. After the workshop if you're interested in using a your own domain, follow the instructions for [setting up a static website using a custom domain](http://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html) in the Amazon S3 documentation.
 
 ## Implementation Instructions
 
-Each of the following sections provides an implementation overview and detailed, step-by-step instructions. The overview should provide enough context for you to complete the implementation if you're already familiar with the AWS Management Console or you want to explore the services yourself without following a walkthrough.
+Each of the following sections provides a brief implementation overview and detailed, step-by-step instructions. The overview should provide enough context for you to complete the implementation if you're already familiar with the AWS Management Console or you want to explore the services yourself without following a walkthrough.
 
 If you're using the latest version of the Chrome, Firefox, or Safari web browsers the step-by-step instructions won't be visible until you expand the section.
 
@@ -41,33 +41,17 @@ Amazon S3 can be used to host static websites without having to configure or man
 
 Use the console or AWS CLI to create an Amazon S3 bucket. Keep in mind that your bucket's name must be globally unique across all regions and customers. We recommend using a name like `wildrydes-firstname-lastname`. If you get an error that your bucket name already exists, try adding additional numbers or characters until you find an unused name.
 
-<details>
-<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
-
-1. In the AWS Management Console choose **Services** then select **S3** under Storage.
-
-1. Choose **+Create Bucket**
-
-1. Provide a globally unique name for your bucket such as `wildrydes-firstname-lastname`.
-
-1. Select the Region you've chosen to use for this workshop from the dropdown.
-
-1. Choose **Create** in the lower left of the dialog without selecting a bucket to copy settings from.
-
-    ![Create bucket screenshot](../images/create-bucket.png)
-
-</p></details>
 
 ### 2. Upload Content
 
-Upload the website assets for this module to your S3 bucket. You can use the AWS Management Console (requires Google Chrome browser), or AWS CLI to complete this step. If you already have the AWS CLI installed and configured on your local machine, we recommend using that method. Otherwise, use the console if you have the latest version of Google Chrome installed.
+Upload the website assets for this module to your S3 bucket. Use the AWS CLI to complete this step.
 
 <details>
 <summary><strong>CLI step-by-step instructions (expand for details)</strong></summary><p>
 
 If you already have the CLI installed and configured, you can use it to copy the necessary web assets from `s3://SOURCE_BUCKET` to your bucket.
 
-**Tip**: Look at [AWS S3 Sync](https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html)
+**Tip**: Look at [AWS S3 CLI](https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html)
 
 You should see a list of objects that were copied to your bucket.
 </p></details>
@@ -83,38 +67,6 @@ You will need to add a bucket policy to your new Amazon S3 bucket to let anonymo
 
 See [this example](http://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html#example-bucket-policies-use-case-2) of a policy that will grant read only access to anonymous users. This example policy allows anyone on the Internet to view your content. The easiest way to update a bucket policy is to use the console. Select the bucket, choose the permission tab and then select Bucket Policy. As a reminder, by default, all buckets are now created with additional guard-rails to prevent security misconfigurations and you need to relax the public bucket policies. 
 
-<details>
-<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
-
-1. In the S3 console, select the name of the bucket you created in section 1.
-
-1. Choose the **Permissions** tab, then choose **Public access settings**.
-
-1. Disable **Block new public bucket policies** and **Block public and cross-account access if bucket has public policies**.
-
-1. Choose **Bucket Policy** in the **Permissions** tab.
-
-1. Enter the following policy document into the bucket policy editor replacing `YOUR_BUCKET_NAME` with the name of the bucket you created in section 1:
-
-    ```json
-    {
-        "Version": "2012-10-17",
-        "Statement": [
-            {
-                "Effect": "Allow",
-                "Principal": "*",
-                "Action": "s3:GetObject",
-                "Resource": "arn:aws:s3:::YOUR_BUCKET_NAME/*"
-            }
-        ]
-    }
-    ```
-
-    ![Update bucket policy screenshot](../images/update-bucket-policy.png)
-
-1. Choose **Save** to apply the new policy.
-
-</p></details>
 
 ### 4. Enable Website Hosting
 
@@ -126,22 +78,7 @@ You can also use a custom domain for your website. For example http://www.wildry
 
 Using the console, enable static website hosting. You can do this on the Properties tab after you've selected the bucket. Set `index.html` as the index document, and leave the error document blank. See the documentation on [configuring a bucket for static website hosting](https://docs.aws.amazon.com/AmazonS3/latest/dev/HowDoIWebsiteConfiguration.html) for more details.
 
-<details>
-<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
-
-1. From the bucket detail page in the S3 console, choose the **Properties** tab.
-
-1. Choose the **Static website hosting** card.
-
-1. Select **Use this bucket to host a website** and enter `index.html` for the Index document. Leave the other fields blank.
-
-1. Note the **Endpoint** URL at the top of the dialog before choosing **Save**. You will use this URL throughout the rest of the workshop to view your web application. From here on this URL will be referred to as your website's base URL.
-
-1. Click **Save** to save your changes.
-
-    ![Enable website hosting screenshot](../images/enable-website-hosting.png)
-
-</p></details>
+Note the **Endpoint** URL at the top of the dialog before choosing **Save**. You will use this URL throughout the rest of the workshop to view your web application. From here on this URL will be referred to as your website's base URL.
 
 
 ## Implementation Validation

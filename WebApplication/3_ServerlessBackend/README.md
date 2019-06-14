@@ -20,25 +20,6 @@ Use the Amazon DynamoDB console to create a new DynamoDB table. Call your table 
 
 After you've created the table, note the ARN for use in the next step.
 
-<details>
-<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
-
-1. From the AWS Management Console, choose **Services** then select **DynamoDB** under Databases.
-
-1. Choose **Create table**.
-
-1. Enter `Rides` for the **Table name**. This field is case sensitive.
-
-1. Enter `RideId` for the **Partition key** and select **String** for the key type. This field is case sensitive.
-
-1. Check the **Use default settings** box and choose **Create**.
-
-    ![Create table screenshot](../images/ddb-create-table.png)
-
-1. Scroll to the bottom of the Overview section of your new table and note the **ARN**. You will use this in the next section.
-
-</p></details>
-
 
 ### 2. Create an IAM Role for Your Lambda function
 
@@ -53,52 +34,6 @@ Use the IAM console to create a new role. Name it `WildRydesLambda` and select A
 Attach the managed policy called `AWSLambdaBasicExecutionRole` to this role to grant the necessary CloudWatch Logs permissions. Also, create a custom inline policy for your role that allows the `ddb:PutItem` action for the table you created in the previous section.
 
 Note: AWS Educate accounts limit AWS IAM inline policies therefore use the managed policy called `AmazonDynamoDBFullAccess` instead.
-
-<details>
-<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
-
-1. From the AWS Management Console, click on **Services** and then select **IAM** in the Security, Identity & Compliance section.
-
-1. Select **Roles** in the left navigation bar and then choose **Create new role**.
-
-1. Select **Lambda** for the role type from the **AWS service** group, then click **Next: Permissions**
-
-    **Note:** Selecting a role type automatically creates a trust policy for your role that allows AWS services to assume this role on your behalf. If you were creating this role using the CLI, AWS CloudFormation or another mechanism, you would specify a trust policy directly.
-
-1. Begin typing `AWSLambdaBasicExecutionRole` in the **Filter** text box and check the box next to that role.
-
-1. Click **Next: Review**.
-
-1. Enter `WildRydesLambda` for the **Role name**.
-
-1. Choose **Create role**.
-
-1. Type `WildRydesLambda` into the filter box on the Roles page and choose the role you just created.
-
-1. On the Permissions tab, choose the **Add inline policy** link in the lower right corner to create a new inline policy.
-    ![Inline policies screenshot](../images/inline-policies.png)
-
-1. Select **Choose a service**.
-
-1. Begin typing `DynamoDB` into the search box labeled **Find a service** and select **DynamoDB** when it appears.
-    ![Select policy service](../images/select-policy-service.png)
-
-1. Choose **Select actions**.
-
-1. Begin typing `PutItem` into the search box labeled **Filter actions** and check the box next to **PutItem** when it appears.
-
-1. Select the **Resources** section.
-
-1. With the **Specific** option selected, choose the Add ARN link in the **table** section.
-
-1. Paste the ARN of the table you created in the previous section in the **Specify ARN for table** field, and choose **Add**.
-
-1. Choose **Review Policy**.
-
-1. Enter `DynamoDBWriteAccess` for the policy name and choose **Create policy**.
-    ![Review Policy](../images/review-policy.png)
-
-</p></details>
 
 ### 3. Create a Lambda Function for Handling Requests
 

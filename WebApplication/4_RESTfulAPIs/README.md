@@ -161,7 +161,7 @@ Update the /js/config.js file in your website deployment to include the invoke U
 <details>
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
 
-If you completed module 2 manually, you can edit the `config.js` file you have saved locally. If you used the AWS CloudFormation template, you must first download the `config.js` file from your S3 bucket. To do so, visit `/js/config.js` under the base URL for your website and choose **File**, then choose **Save Page As** from your browser.
+ Edit the `config.js` file you have saved locally from module 2.
 
 1. Open the config.js file in a text editor.
 
