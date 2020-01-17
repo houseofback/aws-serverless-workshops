@@ -17,22 +17,17 @@ After users have a confirmed account (either using the email verification proces
 
 Each of the following sections provides an implementation overview and detailed, step-by-step instructions. The overview should provide enough context for you to complete the implementation if you're already familiar with the AWS Management Console or you want to explore the services yourself without following a walkthrough.
 
-If you're using the latest version of the Chrome, Firefox, or Safari web browsers the step-by-step instructions won't be visible until you expand the section.
-
 ### 1. Create an Amazon Cognito User Pool
 
 #### Background
 
 Amazon Cognito provides two different mechanisms for authenticating users. You can use Cognito User Pools to add sign-up and sign-in functionality to your application or use Cognito Identity Pools to authenticate users through social identity providers such as Facebook, Twitter, or Amazon, with SAML identity solutions, or by using your own identity system. For this module you'll use a user pool as the backend for the provided registration and sign-in pages.
 
-#### High-Level Instructions
-
 Use the Amazon Cognito console to create a new user pool using the default settings. Once your pool is created, note the Pool Id. You'll use this value in a later section.
 
-<details>
-<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+**:white_check_mark: Step-by-step directions**
 
-1. From the AWS Console click **Services** then select **Cognito** under Security, Identity & Compliance.
+1. From the AWS Console click **Services** then select **Cognito** .
 
 1. Choose **Manage your User Pools**.
 
@@ -46,14 +41,12 @@ Use the Amazon Cognito console to create a new user pool using the default setti
 
 1. Note the **Pool Id** on the Pool details page of your newly created user pool.
 
-</p></details>
 
 ### 2. Add an App Client to Your User Pool
 
 From the Amazon Cognito console select your user pool and then select the **App clients** section. Add a new app client and make sure the Generate client secret option is deselected. Client secrets aren't supported with the JavaScript SDK. If you do create an app with a generated secret, delete it and create a new one with the correct configuration.
 
-<details>
-<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+**:white_check_mark: Step-by-step directions**
 
 1. From the Pool Details page for your user pool, select **App clients** from the **General settings** section in the left navigation bar.
 
@@ -69,14 +62,12 @@ From the Amazon Cognito console select your user pool and then select the **App 
 
 1. Note the **App client id** for the newly created application.
 
-</p></details>
 
 ### 3. Update the config.js File in Your Website Bucket
 
 The [/js/config.js](../1_StaticWebHosting/website/js/config.js) file contains settings for the user pool ID, app client ID and Region. Update this file with the settings from the user pool and app you created in the previous steps and upload the file back to your bucket.
 
-<details>
-<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+**:white_check_mark: Step-by-step directions**
 
 1. Download the [config.js](../1_StaticWebHosting/website/js/config.js) file from the website directory of the first module in this repository to your local machine.
 
@@ -103,7 +94,7 @@ The [/js/config.js](../1_StaticWebHosting/website/js/config.js) file contains se
             region: 'eu-west-1' // e.g. us-east-2
         },
         api: {
-            invokeUrl: '' // e.g. https://rc7nyt4tql.execute-api.us-west-2.amazonaws.com/prod',
+            invokeUrl: '' // e.g. https://rc7nyt4tql.execute-api.us-west-2.amazonaws.com/prod,
         }
     };
     ```
@@ -124,7 +115,6 @@ The [/js/config.js](../1_StaticWebHosting/website/js/config.js) file contains se
 
 1. Choose **Upload** on the left side of the dialog.
 
-</p></details>
 
 <p>
 
