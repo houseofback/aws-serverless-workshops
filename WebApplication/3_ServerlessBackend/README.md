@@ -70,7 +70,7 @@ Make sure to configure your function to use the `WildRydesLambda` IAM role you c
 
 1. Keep the default **Author from scratch** card selected.
 
-1. Enter `RequestUnicorn` in the **Name** field.
+1. Enter `RequestUnicorn-firstname-lastname` in the **Name** field.
 
 1. Select **Node.js 10.x** for the **Runtime**.
 2. Expand *Choose or create an execution role* under **Permissions**.
