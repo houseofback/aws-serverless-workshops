@@ -18,9 +18,6 @@ If you're using the latest version of the Chrome, Firefox, or Safari web browser
 
 Use the Amazon DynamoDB console to create a new DynamoDB table. Call your table `Rides-firstname-lastname` and give it a partition key called `RideId` with type String. The table name and partition key are case sensitive. Make sure you use the exact IDs provided. Use the defaults for all other settings.
 
-After you've created the table, note the ARN for use in the next step.
-
-
 ### 2. Create an IAM Role for Your Lambda function
 
 #### Background
@@ -67,6 +64,8 @@ Make sure to configure your function to use the `WildRydesLambda` IAM role you c
 
 1. Scroll down to the **Function code** section and replace the existing code in the **index.js** code editor with the contents of [requestUnicorn.js](requestUnicorn.js).
     ![Create Lambda function screenshot](../images/create-lambda-function-code.png)
+    
+1. Edit line 90 of the function code `TableName: 'Rides',` to `TableName: 'Rides-firstname-lastname',
 
 1. Click **"Save"** in the upper right corner of the page.
 
