@@ -38,7 +38,7 @@ Use the Amazon Cognito console to create a new user pool using the default setti
 
 1. Choose **Create a User Pool**
 
-1. Provide a name for your user pool such as `WildRydes`, then select **Review Defaults**
+1. Provide a name for your user pool such as `WildRydes-firstname-lastname`, then select **Review Defaults**
 
     ![Create a user pool screenshot](../images/create-a-user-pool.png)
 
@@ -50,7 +50,7 @@ Use the Amazon Cognito console to create a new user pool using the default setti
 
 ### 2. Add an App Client to Your User Pool
 
-From the Amazon Cognito console select your user pool and then select the **App clients** section. Add a new app and make sure the Generate client secret option is deselected. Client secrets aren't supported with the JavaScript SDK. If you do create an app with a generated secret, delete it and create a new one with the correct configuration.
+From the Amazon Cognito console select your user pool and then select the **App clients** section. Add a new app client and make sure the Generate client secret option is deselected. Client secrets aren't supported with the JavaScript SDK. If you do create an app with a generated secret, delete it and create a new one with the correct configuration.
 
 <details>
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
@@ -92,15 +92,15 @@ The [/js/config.js](../1_StaticWebHosting/website/js/config.js) file contains se
 
     ![Pool ID](../images/client-id.png)
 
-    The value for `region` should be the AWS Region code where you created your user pool. E.g. `us-east-1` for the N. Virginia Region, or `us-west-2` for the Oregon Region. If you're not sure which code to use, you can look at the Pool ARN value on the Pool details page. The Region code is the part of the ARN immediately after `arn:aws:cognito-idp:`.
+    The value for `region` should be the AWS Region code where you created your user pool. E.g. `eu-west-1` for the Ireland Region. 
 
     The updated config.js file should look like this. Note that the actual values for your file will be different:
     ```JavaScript
     window._config = {
         cognito: {
-            userPoolId: 'us-west-2_uXboG5pAb', // e.g. us-east-2_uXboG5pAb
+            userPoolId: 'eu-west-1_uXboG5pAb', // e.g. us-east-2_uXboG5pAb
             userPoolClientId: '25ddkmj4v6hfsfvruhpfi7n4hv', // e.g. 25ddkmj4v6hfsfvruhpfi7n4hv
-            region: 'us-west-2' // e.g. us-east-2
+            region: 'eu-west-1' // e.g. us-east-2
         },
         api: {
             invokeUrl: '' // e.g. https://rc7nyt4tql.execute-api.us-west-2.amazonaws.com/prod',
@@ -140,7 +140,7 @@ The [/js/config.js](../1_StaticWebHosting/website/js/config.js) file contains se
 
 1. Confirm your new user using one of the two following methods.
 
-  1. If you used an email address you control, you can complete the account verification process by visiting `/verify.html` under your website domain and entering the verification code that is emailed to you. Please note, the verification email may end up in your spam folder. For real deployments we recommend [configuring your user pool to use Amazon Simple Email Service](http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-message-customizations.html#cognito-user-pool-settings-ses-authorization-to-send-email) to send emails from a domain you own.
+  1. If you used an email address you control, you can complete the account verification process by visiting `/verify.html` under your website domain and entering the verification code that is emailed to you. Please note, the verification email may end up in your spam folder. 
 
   1. If you used a dummy email address, you must confirm the user manually through the Cognito console.
 
@@ -150,7 +150,7 @@ The [/js/config.js](../1_StaticWebHosting/website/js/config.js) file contains se
     1. You should see a user corresponding to the email address that you submitted through the registration page. Choose that username to view the user detail page.
     1. Choose **Confirm user** to finalize the account creation process.
 
-1. After confirming the new user using either the `/verify.html` page or the Cognito console, visit `/signin.html` and log in using the email address and password you entered during the registration step.
+1. After confirming the new user using either the `/verify.html` page (for real email addresses) or the Cognito console, visit `/signin.html` and log in using the email address and password you entered during the registration step.
 
 1. If successful you should be redirected to `/ride.html`. You should see a notification that the API is not configured.
 
