@@ -12,11 +12,22 @@ The function is invoked from the browser using Amazon API Gateway. You'll implem
 
 Each of the following sections provide an implementation overview and detailed, step-by-step instructions. The overview should provide enough context for you to complete the implementation if you're already familiar with the AWS Management Console or you want to explore the services yourself without following a walkthrough.
 
-If you're using the latest version of the Chrome, Firefox, or Safari web browsers the step-by-step instructions won't be visible until you expand the section.
-
 ### 1. Create an Amazon DynamoDB Table
 
 Use the Amazon DynamoDB console to create a new DynamoDB table. Call your table `Rides-firstname-lastname` and give it a partition key called `RideId` with type String. The table name and partition key are case sensitive. Make sure you use the exact IDs provided. Use the defaults for all other settings.
+
+**:white_check_mark: Step-by-step directions**
+
+1. Go to the Amazon DynamoDB Console
+
+1. Choose **Create table**.
+
+1. Enter `Rides-firstname-lastname` for the **Table name**. This field is case sensitive.
+
+1. Enter `RideId` for the **Partition key** and select **String** for the key type. This field is case sensitive.
+
+1. Check the **Use default settings** box and choose **Create**.
+
 
 ### 2. Create an IAM Role for Your Lambda function
 
@@ -24,11 +35,21 @@ Use the Amazon DynamoDB console to create a new DynamoDB table. Call your table 
 
 Every Lambda function has an IAM role associated with it. This role defines what other AWS services the function is allowed to interact with. For the purposes of this workshop, you'll need to create an IAM role that grants your Lambda function permission to write logs to Amazon CloudWatch Logs and access to write items to your DynamoDB table.
 
-#### High-Level Instructions
+**:white_check_mark: Step-by-step directions**
+1. Go to the AWS IAM Console
+1. Select **Roles** in the left navigation bar and then choose **Create role**.
+1. Select **Lambda** for the role type from the **AWS service** group, then click **Next: Permissions**
 
-Use the IAM console to create a new role. Name it `WildRydesLambda-firstname-lastname` and select AWS Lambda for the role type. You'll need to attach policies that grant your function permissions to write to Amazon CloudWatch Logs and put items to your DynamoDB table.
+    **Note:** Selecting a role type automatically creates a trust policy for your role that allows AWS services to assume this role on your behalf. If you were creating this role using the CLI, AWS CloudFormation or another mechanism, you would specify a trust policy directly.
 
-Attach the managed policy called `AWSLambdaBasicExecutionRole` to this role to grant the necessary CloudWatch Logs permissions. Attach the managed policy called `AmazonDynamoDBFullAccess` to this role to grant database access.
+1. Begin typing `AWSLambdaBasicExecutionRole` in the **Filter** text box and check the box next to that role.
+1. Also, add `AmazonDynamoDBFullAccess` as a policy just like you did above.
+
+1. Click **Next: Tags**. Add any tags that you wish.
+1. Click **Next: Review**.
+
+1. Enter `WildRydesLambda-firstname-lastname` for the **Role name**.
+1. Choose **Create role**. 
 
 ### 3. Create a Lambda Function for Handling Requests
 
@@ -42,9 +63,7 @@ Use the AWS Lambda console to create a new Lambda function called `RequestUnicor
 
 Make sure to configure your function to use the `WildRydesLambda` IAM role you created in the previous section.
 
-<details>
-<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
-
+**:white_check_mark: Step-by-step directions**
 1. Choose on **Services** then select **Lambda** in the Compute section.
 
 1. Click **Create function**.
@@ -53,11 +72,11 @@ Make sure to configure your function to use the `WildRydesLambda` IAM role you c
 
 1. Enter `RequestUnicorn` in the **Name** field.
 
-1. Select **Node.js 12.x** for the **Runtime**.
-
+1. Select **Node.js 10.x** for the **Runtime**.
+2. Expand *Choose or create an execution role* under **Permissions**.
 1. Ensure `Choose an existing role` is selected from the **Role** dropdown.
 
-1. Select `WildRydesLambda` from the **Existing Role** dropdown.
+1. Select `WildRydesLambda-firstname-lastname` from the **Existing Role** dropdown.
     ![Create Lambda function screenshot](../images/create-lambda-function.png)
 
 1. Click on **Create function**.
@@ -69,12 +88,12 @@ Make sure to configure your function to use the `WildRydesLambda` IAM role you c
 
 1. Click **"Save"** in the upper right corner of the page.
 
-</p></details>
 
 ## Implementation Validation
 
 For this module you will test the function that you built using the AWS Lambda console. In the next module you will add a REST API with API Gateway so you can invoke your function from the browser-based application that you deployed in the first module.
 
+**:white_check_mark: Step-by-step directions**
 1. From the main edit screen for your function, select **Configure test event** from the the **Select a test event...** dropdown.
     ![Configure test event](../images/configure-test-event.png)
 
@@ -118,7 +137,7 @@ For this module you will test the function that you built using the AWS Lambda c
 ```JSON
 {
     "statusCode": 201,
-    "body": "{\"RideId\":\"SvLnijIAtg6inAFUBRT+Fg==\",\"Unicorn\":{\"Name\":\"Rocinante\",\"Color\":\"Yellow\",\"Gender\":\"Female\"},\"Eta\":\"30 seconds\"}",
+    "body": "{\"RideId\":\"1h0zDZ-6KLZaEQCPyqTxeQ",\"Unicorn\":{\"Name\":\"Shadowfax\",\"Color\":\"White\",\"Gender\":\"Male\"},\"UnicornName\":\"Shadowfax\",\"Eta\":\"30 seconds\",\"Rider\":\"the_username\"}",
     "headers": {
         "Access-Control-Allow-Origin": "*"
     }
