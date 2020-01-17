@@ -14,14 +14,11 @@ This module will focus on the steps required to build the cloud components of th
 
 Each of the following sections provides an implementation overview and detailed, step-by-step instructions. The overview should provide enough context for you to complete the implementation if you're already familiar with the AWS Management Console or you want to explore the services yourself without following a walkthrough.
 
-If you're using the latest version of the Chrome, Firefox, or Safari web browsers the step-by-step instructions won't be visible until you expand the section.
-
 ### 1. Create a New REST API
 Use the Amazon API Gateway console to create a new API.
-
-<details>
-<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
-
+    
+**:white_check_mark:Step-by-step directions**
+    
 1. In the AWS Management Console, click **Services** then select **API Gateway** under Networking & Content Delivery.
 
 1. Choose **Create API**.
@@ -36,9 +33,6 @@ Use the Amazon API Gateway console to create a new API.
 
     ![Create API screenshot](../images/create-api.png)
 
-</p></details>
-
-
 ### 2. Create a Cognito User Pools Authorizer
 
 #### Background
@@ -47,9 +41,7 @@ Amazon API Gateway can use the JWT tokens returned by Cognito User Pools to auth
 #### High-Level Instructions
 In the Amazon API Gateway console, create a new Cognito user pool authorizer for your API. Configure it with the details of the user pool that you created in the previous module. You can test the configuration in the console by copying and pasting the auth token presented to you after you log in via the /signin.html page of your current website.
 
-<details>
-<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
-
+**:white_check_mark:Step-by-step directions**
 1. Under your newly created API, choose **Authorizers**.
 
 1. Choose **Create New Authorizer**.
@@ -86,14 +78,10 @@ In the Amazon API Gateway console, create a new Cognito user pool authorizer for
 
 1. Click **Test** button and verify that the response code is 200 and that you see the claims for your user displayed.
 
-</p></details>
-
 ### 3. Create a new resource and method
 Create a new resource called /ride within your API. Then create a POST method for that resource and configure it to use a Lambda proxy integration backed by the RequestUnicorn function you created in the first step of this module.
 
-<details>
-<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
-
+**:white_check_mark:Step-by-step directions**
 1. In the left nav, click on **Resources** under your WildRydes-firstname-lastname API.
 
 1. From the **Actions** dropdown select **Create Resource**.
@@ -136,14 +124,10 @@ Create a new resource called /ride within your API. Then create a POST method fo
 
     ![API authorizer configuration screenshot](../images/api-authorizer.png)
 
-</p></details>
-
 ### 4. Deploy Your API
 From the Amazon API Gateway console, choose Actions, Deploy API. You'll be prompted to create a new stage. You can use `prod` for the stage name.
 
-<details>
-<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
-
+**:white_check_mark:Step-by-step directions**
 1. In the **Actions** drop-down list select **Deploy API**.
 
 1. Select **[New Stage]** in the **Deployment stage** drop-down list.
@@ -154,14 +138,10 @@ From the Amazon API Gateway console, choose Actions, Deploy API. You'll be promp
 
 1. Note the **Invoke URL**. You will use it in the next section.
 
-</p></details>
-
 ### 5. Update the Website Config
 Update the /js/config.js file in your website deployment to include the invoke URL of the stage you just created. You should copy the invoke URL directly from the top of the stage editor page on the Amazon API Gateway console and paste it into the \_config.api.invokeUrl key of your sites /js/config.js file. Make sure when you update the config file it still contains the updates you made in the previous module for your Cognito user pool.
 
-<details>
-<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
-
+**:white_check_mark:Step-by-step directions**
  Edit the `config.js` file you have saved locally from module 2.
 
 1. Open the config.js file in a text editor.
@@ -197,8 +177,6 @@ Update the /js/config.js file in your website deployment to include the invoke U
 
 1. Choose **Upload** on the `Review` section.
 
-</p></details>
-
 ## Implementation Validation
 
 **Note:** It's possible that you will see a delay between updating the config.js file in your S3 bucket and when the updated content is visible in your browser. You should also ensure that you clear your browser cache before executing the following steps.
@@ -210,7 +188,8 @@ Update the /js/config.js file in your website deployment to include the invoke U
 1. After the map has loaded, click anywhere on the map to set a pickup location.
 
 1. Choose **Request Unicorn**. You should see a notification in the right sidebar that a unicorn is on its way and then see a unicorn icon fly to your pickup location.
+2. If you have any errors, go back through each step *carefully*. The error message may help you.
 
-Congratulations, you have completed the Wild Rydes Web Application Workshop! Check out our [other workshops](../../README.md#workshops) covering additional serverless use cases.
+:tada: Congratulations, you have completed the Wild Rydes Web Application Workshop! C
 
 See this workshop's [cleanup guide](../9_CleanUp) for instructions on how to delete the resources you've created.
