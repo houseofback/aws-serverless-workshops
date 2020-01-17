@@ -56,7 +56,7 @@ Make sure to configure your function to use the `WildRydesLambda` IAM role you c
 
 1. Enter `RequestUnicorn` in the **Name** field.
 
-1. Select **Node.js 8.10** for the **Runtime**.
+1. Select **Node.js 12.x** for the **Runtime**.
 
 1. Ensure `Choose an existing role` is selected from the **Role** dropdown.
 
