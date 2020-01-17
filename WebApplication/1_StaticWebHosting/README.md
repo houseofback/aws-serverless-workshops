@@ -73,7 +73,7 @@ See [this example](http://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket
 **:white_check_mark: Step-by-step directions** back in the AWS Management Console.
 1. Select your S3 bucket name to open more options. You will see all those files we just copied listed here.
 1. Navigate to **Permissions** tab. Then select the **Bucket Policy**.
-1. Add the following policy and **Save*.
+1. Add the following policy and **Save**.
 ```
 {
     "Version": "2012-10-17",
