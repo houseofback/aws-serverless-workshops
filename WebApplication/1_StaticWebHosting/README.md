@@ -27,7 +27,9 @@ This workshop can be deployed in any AWS region that supports the following serv
 - Amazon S3
 - Amazon DynamoDB
 
-You can refer to the [region table](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/) in the AWS documentation to see which regions have the supported services. **Use the Ireland region please**.
+You can refer to the [region table](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/) in the AWS documentation to see which regions have the supported services. 
+
+**Use the Ireland region please**.
 
 Once you've chosen a region, you should deploy all of the resources for this workshop there. Make sure you select your region from the dropdown in the upper right corner of the AWS Console before getting started.
 
@@ -51,7 +53,7 @@ Upload the website assets for this module to your S3 bucket. Use the AWS CLI to 
 
 If you already have the CLI installed and configured, you can use it to copy the necessary web assets from `s3://SOURCE_BUCKET` to your bucket.
 
-**Tip**: `s3 cp s3://wildrydes-us-east-1/WebApplication/1_StaticWebHosting/website $s3://YOUR_BUCKET_NAME --recursive`
+**Tip**: `s3 cp s3://wildrydes-us-east-1/WebApplication/1_StaticWebHosting/website s3://YOUR_BUCKET_NAME --recursive`
 
 You should see a list of objects that were copied to your bucket.
 </p></details>
