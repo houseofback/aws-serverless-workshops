@@ -190,6 +190,6 @@ Update the /js/config.js file in your website deployment to include the invoke U
 1. Choose **Request Unicorn**. You should see a notification in the right sidebar that a unicorn is on its way and then see a unicorn icon fly to your pickup location.
 2. If you have any errors, go back through each step *carefully*. The error message may help you.
 
-:tada: Congratulations, you have completed the Wild Rydes Web Application Workshop! C
+:tada: Congratulations, you have completed the Wild Rydes Web Application Workshop!
 
 See this workshop's [cleanup guide](../9_CleanUp) for instructions on how to delete the resources you've created.
