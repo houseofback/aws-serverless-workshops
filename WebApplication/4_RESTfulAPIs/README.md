@@ -26,10 +26,11 @@ Use the Amazon API Gateway console to create a new API.
 
 1. Choose **Create API**.
 
-1. Select **New API** and enter `WildRydes` for the **API Name**.
+1. Select **REST**.
 
-1. Keep `Edge optimized` selected in the **Endpoint Type** dropdown.
-    ***Note***: Edge optimized are best for public services being accessed from the Internet. Regional endpoints are typically used for APIs that are accessed primarily from within the same AWS Region.
+1. Select **New API** and enter `WildRydes-firstname-lastname` for the **API Name**.
+
+1. Select `Edge optimised` selected in the **Endpoint Type** dropdown.
 
 1. Choose **Create API**
 
@@ -59,7 +60,7 @@ In the Amazon API Gateway console, create a new Cognito user pool authorizer for
 
 1. In the Region drop-down under **Cognito User Pool**, select the Region where you created your Cognito user pool in module 2 (by default the current region should be selected).
 
-1. Enter `WildRydes` (or the name you gave your user pool) in the **Cognito User Pool** input.
+1. Enter `WildRydes-firstname-lastname` (or the name you gave your user pool) in the **Cognito User Pool** input.
 
 1. Enter `Authorization` for the **Token Source**.
 
@@ -93,7 +94,7 @@ Create a new resource called /ride within your API. Then create a POST method fo
 <details>
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
 
-1. In the left nav, click on **Resources** under your WildRydes API.
+1. In the left nav, click on **Resources** under your WildRydes-firstname-lastname API.
 
 1. From the **Actions** dropdown select **Create Resource**.
 
@@ -119,7 +120,7 @@ Create a new resource called /ride within your API. Then create a POST method fo
 
 1. Select the Region you are using for **Lambda Region**.
 
-1. Enter the name of the function you created in the previous module, `RequestUnicorn`, for **Lambda Function**.
+1. Enter the name of the function you created in the previous module, `RequestUnicorn-firstname-lastname`, for **Lambda Function**.
 
 1. Choose **Save**. Please note, if you get an error that you function does not exist, check that the region you selected matches the one you used in the previous module.
 
@@ -138,7 +139,7 @@ Create a new resource called /ride within your API. Then create a POST method fo
 </p></details>
 
 ### 4. Deploy Your API
-From the Amazon API Gateway console, choose Actions, Deploy API. You'll be prompted to create a new stage. You can use prod for the stage name.
+From the Amazon API Gateway console, choose Actions, Deploy API. You'll be prompted to create a new stage. You can use `prod` for the stage name.
 
 <details>
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
