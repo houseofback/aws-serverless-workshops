@@ -84,7 +84,7 @@ Make sure to configure your function to use the `WildRydesLambda` IAM role you c
 1. Scroll down to the **Function code** section and replace the existing code in the **index.js** code editor with the contents of [requestUnicorn.js](requestUnicorn.js).
     ![Create Lambda function screenshot](../images/create-lambda-function-code.png)
     
-1. Edit line 90 of the function code `TableName: 'Rides',` to `TableName: 'Rides-firstname-lastname',
+1. Edit line 90 of the function code `TableName: 'Rides',` to `TableName: \'Rides-firstname-lastname\',
 
 1. Click **"Save"** in the upper right corner of the page.
 
